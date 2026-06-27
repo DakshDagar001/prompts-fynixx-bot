@@ -1,0 +1,283 @@
+# Fynixx Bot — Phase 2: Core Framework Implementation
+
+The architecture and planning phase has been completed and approved.
+
+Now begin implementing the **core framework** of Fynixx Bot.
+
+This phase should **NOT** implement moderation, tickets, AI, verification, or other user-facing modules yet.
+
+Your goal is to build the foundation that every future module will use.
+
+---
+
+# Primary Objective
+
+Create a production-ready core framework that is scalable, modular, secure, and maintainable.
+
+The bot should successfully:
+
+* Install dependencies
+* Build without errors
+* Connect to Discord
+* Initialize all core services
+* Load commands and events dynamically
+* Connect to the database
+* Load configuration
+* Initialize logging
+* Handle errors gracefully
+* Shut down cleanly
+
+---
+
+# Core Components to Implement
+
+## Project Initialization
+
+* Initialize the project using the approved tech stack.
+* Configure TypeScript.
+* Configure package manager.
+* Configure scripts for development and production.
+* Configure linting and formatting.
+* Configure environment variable loading.
+
+---
+
+## Configuration Manager
+
+Create a centralized configuration system.
+
+It should:
+
+* Load environment variables.
+* Validate configuration.
+* Provide strongly typed access.
+* Support development and production environments.
+* Fail gracefully if configuration is invalid.
+
+---
+
+## Logger
+
+Implement a centralized logging system.
+
+Support:
+
+* Startup logs
+* Information
+* Warnings
+* Errors
+* Debug logs
+* Fatal errors
+
+Ensure logs are structured and easy to extend later.
+
+---
+
+## Dependency Injection
+
+Implement the dependency injection container selected during the architecture phase.
+
+All services should be resolved through the container.
+
+Avoid global singleton patterns where unnecessary.
+
+---
+
+## Database
+
+Implement:
+
+* Database connection
+* Health checks
+* Initialization
+* Graceful reconnection
+* Migration support (if applicable)
+
+Do not create feature-specific tables yet.
+
+---
+
+## Cache Layer
+
+Implement the cache abstraction.
+
+Support future use with Redis or an in-memory cache.
+
+Design it so implementations can be swapped without affecting business logic.
+
+---
+
+## Event Loader
+
+Implement dynamic loading of Discord events.
+
+Requirements:
+
+* Automatic discovery
+* Automatic registration
+* Clean separation
+* Error isolation
+* Hot extensibility
+
+---
+
+## Command Loader
+
+Implement dynamic loading of slash commands.
+
+Requirements:
+
+* Automatic discovery
+* Registration
+* Categorization
+* Validation
+* Permission metadata
+* Future autocomplete support
+
+Do not implement moderation commands yet.
+
+---
+
+## Module Loader
+
+Implement the internal module system.
+
+Requirements:
+
+* Independent modules
+* Startup lifecycle
+* Shutdown lifecycle
+* Dependency management
+* Module metadata
+
+Future modules should plug into this system without changing the core.
+
+---
+
+## Error Handling
+
+Create a centralized error handling system.
+
+Requirements:
+
+* Catch unexpected errors
+* Prevent crashes where possible
+* Log detailed diagnostics
+* Return safe user-facing responses
+
+---
+
+## Scheduler
+
+Implement the scheduling framework.
+
+Do not create scheduled jobs yet.
+
+Only prepare the infrastructure.
+
+---
+
+## Utility Layer
+
+Create shared utilities that future modules can use.
+
+Examples:
+
+* Time helpers
+* String helpers
+* Validation helpers
+* Error helpers
+* Discord helpers
+
+Avoid creating unnecessary utilities.
+
+---
+
+## Bot Bootstrap
+
+Implement the complete startup process.
+
+The startup flow should resemble:
+
+Load Configuration
+
+↓
+
+Initialize Logger
+
+↓
+
+Initialize Dependency Injection
+
+↓
+
+Connect Database
+
+↓
+
+Initialize Cache
+
+↓
+
+Load Modules
+
+↓
+
+Load Events
+
+↓
+
+Load Commands
+
+↓
+
+Login to Discord
+
+↓
+
+Ready
+
+---
+
+## Graceful Shutdown
+
+Handle:
+
+* SIGINT
+* SIGTERM
+* Unexpected failures
+
+Ensure resources are closed correctly.
+
+---
+
+# Code Quality Requirements
+
+* Follow the architecture established in Phase 1.
+* Keep classes focused on a single responsibility.
+* Avoid duplicate logic.
+* Use meaningful names.
+* Write clean, maintainable code.
+* Add documentation where appropriate.
+
+---
+
+# Deliverables
+
+At the end of this phase:
+
+* The bot should compile successfully.
+* The bot should log in successfully.
+* All core systems should initialize correctly.
+* Dynamic loaders should work.
+* The project should be ready for feature modules.
+
+After implementation, explain:
+
+1. What was built.
+2. Why each core system exists.
+3. How the startup lifecycle works.
+4. Any architectural improvements made.
+5. What should be implemented in **Phase 3 (Discord Interaction Framework)** before adding major features.
+
+Do not begin implementing moderation, tickets, AI, or any feature modules unless explicitly requested in the next phase.
